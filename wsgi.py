@@ -1,3 +1,3 @@
-from application.py import app
+from project1 import app
 
 app = app
