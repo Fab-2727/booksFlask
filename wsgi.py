@@ -1,3 +1,2 @@
-from project1 import app
-
+from project1 import application as app
 app = app
