@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Sign up</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='../static/font-style.css'>
+
+</head>
+
+<body>
+    <div class="container h-100">
+        <!--
+        <div class="row justify-content-center">
+            <div class="col-sm-4">
+                <p>Registration</p>
+            </div>
+        </div>
+        -->
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-sm-7 mt-5 pb-2">
+                <h3 class="text-center">Registration</h3>
+            </div>
+            <form class="col-sm-6 border border-dark rounded" action="{{ url_for('registration') }}" method="post">
+
+                {% if message == 'Username already in use' %}
+                {% include 'errorReg.html' %}
+                {% elif message == 'Successfull register, now Login' %}
+                {% include 'successReg.html' %}
+                {% endif %}
+
+                <div class="form-group  pr-2 pl-2 pt-3">
+                    <label for="username">Username:</label>
+                    <input type="text" autofocus class="form-control" id="username" name='newusername' required>
+                </div>
+                <div class="form-group pr-2 pl-2">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" name='newpassword' required>
+                    <div class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" id="check">
+                        <label class="form-check-label" for="check">Show password</label>
+                    </div>
+                </div>
+                <!-- INPUT RECONFIRM PASSWORD-->
+                <button type="submit" class="mb-3  btn btn-dark btn-md btn-block">Sign up</button>
+                <a href="{{ url_for('index') }}" class="mt-4 mb-3  btn btn-light btn-md btn-block" role="button"
+                    aria-pressed="true">Back to login</a>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+
+</body>
+
+</html>

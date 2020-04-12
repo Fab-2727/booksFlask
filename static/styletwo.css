@@ -1,0 +1,8 @@
+ul li:hover {
+    background-color: rgb(68, 107, 107) !important;
+    color: #ebebeb;
+}
+
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

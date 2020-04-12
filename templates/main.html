@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Books</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='styletwo.css'>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-10 border border-dark rounded-top border-bottom-0 mt-5">
+                <form action="{{ url_for('search') }}" class="pb-4 pt-3" method="post">
+                    <div class="form-row p-1">
+                        <label for="textBook" class="col-sm-2 col-form-label mr-n4">
+                            <h5>Search &#x1F50D:</h5>
+                        </label>
+                        <div class="col-sm-3 ">
+                            <input type="text" autofocus id="textBook" name='textBook' class="form-control"
+                                placeholder="ISBN, name, Author..." required></input>
+                        </div>
+                        <button type="submit" class="col-sm-1 ml-3 btn btn-secondary btn-sm">
+                            <span style="font-size:medium;">Search</span>
+                        </button>
+                        <div style="margin-left:290px !important;">
+                            <a href="{{ url_for('logout') }}" class="btn btn-outline-dark ml-5" role="button"
+                                aria-pressed="true">Log out</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-10 border border-dark rounded-bottom border-top-0">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="mt-1 ml-2 mb-3">
+                    <p class="d-inline alert alert-info text-dark p-2">{{ message }}</p>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <ul class="list-group mb-2">
+                    {% for book in books %}
+                    <a href="{{ url_for('bookDetails', isbn=book.isbn)}}" class="list-group-item list-group-item-action text-dark"
+                    style="white-space: pre;"><b>Autor:</b> {{ book.author }} <b>Título:</b> {{ book.title  }} <b>ISBN:</b> {{ book.isbn}}</a>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

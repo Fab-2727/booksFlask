@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Book page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='../static/font-style.css'>
+
+
+
+</head>
+
+<body>
+    <div class="container mt-5 ">
+        <div class="row mt-2">
+            <section class="col-sm-7 border border-dark rounded">
+                <header class="text-center mt-3">
+                    <div class="float-left mt-1">
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-dark btn-sm" role="button"
+                            aria-pressed="true">Back</a>
+                    </div>
+                    <h3 class="text-uppercase">{{title}}</h3>
+                </header>
+                
+                <ul class="list-group m-3 mt-4 col-6">
+                    <li class="list-group-item"><b>Author:</b> {{ author }}</li>
+                    <li class="list-group-item" id="isbn"><b>ISBN:</b> {{ isbn }}</li>
+                    <li class="list-group-item"><b>Publication year:</b> {{year}}</li>
+                </ul>
+            </section>
+            <aside class="col-sm-4 ml-auto mr-auto border border-dark rounded">
+                <header class="text-center mb-4 mt-1">
+                    <h3> Goodreads</h3>
+                </header>
+                <h5>Rating: {{ rating }} </h5>
+                <h5>Number of qualifications: {{ countRating }} </h5>
+                <button type="button" class="btn btn-info mt-2" data-toggle="collapse" data-target="#demo"> Make my own
+                    review</button>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="mt-3 ml-2 mb-3">
+                    <p class="d-inline alert alert-info text-dark p-2">{{ message }}</p>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <div id="demo" class="collapse mb-2">
+                    <div class="card-body mt-2 border border-dark">
+                        <form action="{{ url_for('newReview', oldPath=request.endpoint)}}" class="mb-1" id="review-user"
+                            method="POST">
+                            <label for="number-rating">Ranking (1-5):</label>
+                            <input type="number" required name='number-rating' min="1" max="5" size="3">
+                            <button class="btn btn-info btn-sm ml-1" type="submit">
+                                <span>Send review</span>
+                            </button>
+                        </form>
+                        <textarea id="text-rating" required name='text-area' rows="3" cols="25" form="review-user"
+                            maxlength="300"></textarea>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        
+        <div class="row mt-2">
+            <div class="col-sm-7 mt-2">
+                <header class="text-center">
+                    <h4>Reviews from others users</h4>
+                </header>
+                <ul class="list-group m-1">
+                    {% for review in reviews %}
+                    <li class="list-group-item border-0 mb-n2">
+                        <div class="border-bottom border-top border-dark p-1">
+                            <h5 class="text-primary">Rating: {{ review.score }} </h5>
+                            <p>
+                                "{{ review.comentary }}".
+                            </p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="{{url_for('static', filename='.js')}}"></script>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

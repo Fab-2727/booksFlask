@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='../static/style.css'>
+    <script src='.js'></script>
+</head>
+
+<body>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <form class="col-sm-6 border border-dark rounded mt-4" action="{{ url_for('login') }}" method="post">
+                <h3 class="text-center pt-2 text-monospace">Login</h3>
+                {% if message == 'error' %}
+                {% include 'error.html' %}
+                {% endif %}
+                <div class="form-group  pr-2 pl-2 pt-2">
+                    <label for="username">Username:</label>
+                    <input type="text" autofocus class="form-control" id="username" name='username' required>
+                </div>
+                <div class="form-group pr-2 pl-2">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" required name='password'>
+                </div>
+                <button type="submit" class="mb-2 btn btn-dark btn-md btn-block">Login</button>
+                <br>
+                <div class="mb-3">
+                    <p class="d-inline text-primary ">If you don't have an account please click here.</p>
+                    <a href="{{ url_for('registration') }}" class="d-inline btn btn-secondary btn-md ml-4" role="button"
+                        aria-pressed="true">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
