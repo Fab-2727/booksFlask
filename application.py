@@ -104,7 +104,7 @@ def search():
             query = "%" + request.form['textBook'] + "%"
             # Capitalize all words of input for search
             # https://docs.python.org/3.7/library/stdtypes.html?highlight=title#str.title
-            #query = query.title()
+            query = query.title()
             rows = db.execute("SELECT * FROM book WHERE \
                             isbn LIKE :query OR \
                             title LIKE :query OR \
