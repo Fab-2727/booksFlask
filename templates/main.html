@@ -52,7 +52,7 @@
                 <ul class="list-group mb-2">
                     {% for book in books %}
                     <a href="{{ url_for('bookDetails', isbn=book.isbn)}}" class="list-group-item list-group-item-action text-dark"
-                    style="white-space: pre;"><b>Autor:</b> {{ book.author }} <b>Título:</b> {{ book.title  }} <b>ISBN:</b> {{ book.isbn}}</a>
+                    style="white-space: pre;"><b>Autor:</b> {{ book.author }}       <b>Título:</b> {{ book.title  }}        <b>ISBN:</b> {{ book.isbn}}</a>
                     {% endfor %}
                 </ul>
             </div>

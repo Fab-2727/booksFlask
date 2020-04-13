@@ -17,7 +17,7 @@
 <body>
     <div class="container mt-5 ">
         <div class="row mt-2">
-            <section class="col-sm-7 border border-dark rounded">
+            <section class="col-sm-7 border border-dark rounded h-25">
                 <header class="text-center mt-3">
                     <div class="float-left mt-1">
                         <a href="{{ url_for('index') }}" class="btn btn-outline-dark btn-sm" role="button"
@@ -38,8 +38,7 @@
                 </header>
                 <h5>Rating: {{ rating }} </h5>
                 <h5>Number of qualifications: {{ countRating }} </h5>
-                <button type="button" class="btn btn-info mt-2" data-toggle="collapse" data-target="#demo"> Make my own
-                    review</button>
+                <label class="p-1 mb-1 bg-info text-light border-0 rounded" for="text-rating">Make review</label>
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 {% for message in messages %}
@@ -49,8 +48,8 @@
                 {% endfor %}
                 {% endif %}
                 {% endwith %}
-                <div id="demo" class="collapse mb-2">
-                    <div class="card-body mt-2 border border-dark">
+                
+                    <div class="card-body mt-2 mb-2 border border-dark rounded">
                         <form action="{{ url_for('newReview', oldPath=request.endpoint)}}" class="mb-1" id="review-user"
                             method="POST">
                             <label for="number-rating">Ranking (1-5):</label>
@@ -62,11 +61,11 @@
                         <textarea id="text-rating" required name='text-area' rows="3" cols="25" form="review-user"
                             maxlength="300"></textarea>
                     </div>
-                </div>
+                
             </aside>
         </div>
         
-        <div class="row mt-2">
+        <div class="row mt-n5">
             <div class="col-sm-7 mt-2">
                 <header class="text-center">
                     <h4>Reviews from others users</h4>
