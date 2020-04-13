@@ -25,7 +25,7 @@
                     </div>
                     <h3 class="text-uppercase">{{title}}</h3>
                 </header>
-                
+
                 <ul class="list-group m-3 mt-4 col-6">
                     <li class="list-group-item"><b>Author:</b> {{ author }}</li>
                     <li class="list-group-item" id="isbn"><b>ISBN:</b> {{ isbn }}</li>
@@ -48,23 +48,23 @@
                 {% endfor %}
                 {% endif %}
                 {% endwith %}
-                
-                    <div class="card-body mt-2 mb-2 border border-dark rounded">
-                        <form action="{{ url_for('newReview', oldPath=request.endpoint)}}" class="mb-1" id="review-user"
-                            method="POST">
-                            <label for="number-rating">Ranking (1-5):</label>
-                            <input type="number" required name='number-rating' min="1" max="5" size="3">
-                            <button class="btn btn-info btn-sm ml-1" type="submit">
-                                <span>Send review</span>
-                            </button>
-                        </form>
-                        <textarea id="text-rating" required name='text-area' rows="3" cols="25" form="review-user"
-                            maxlength="300"></textarea>
-                    </div>
-                
+
+                <div class="card-body mt-2 mb-2 border border-dark rounded">
+                    <form action="{{ url_for('newReview', oldPath=request.endpoint)}}" class="mb-1" id="review-user"
+                        method="POST">
+                        <label for="number-rating">Ranking (1-5):</label>
+                        <input type="number" required name='number-rating' min="1" max="5" size="3">
+                        <button class="btn btn-info btn-sm ml-1" type="submit">
+                            <span>Send review</span>
+                        </button>
+                    </form>
+                    <textarea id="text-rating" required name='text-area' rows="3" cols="25" form="review-user"
+                        maxlength="300"></textarea>
+                </div>
+
             </aside>
         </div>
-        
+
         <div class="row mt-n5">
             <div class="col-sm-7 mt-2">
                 <header class="text-center">

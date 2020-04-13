@@ -8,7 +8,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel='stylesheet' type='text/css' media='screen' href='../static/font-style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../static/style.css'>
 
 </head>
 
@@ -22,10 +22,11 @@
         </div>
         -->
         <div class="row h-100 justify-content-center align-items-center">
-            <div class="col-sm-7 mt-5 pb-2">
+            <div class="col-sm-7 mb-n5">
                 <h3 class="text-center">Registration</h3>
             </div>
-            <form class="col-sm-6 border border-dark rounded" action="{{ url_for('registration') }}" method="post">
+            <form class="col-sm-6 border border-dark rounded mt-n5" action="{{ url_for('registration') }}"
+                method="post">
 
                 {% if message == 'Username already in use' %}
                 {% include 'errorReg.html' %}
