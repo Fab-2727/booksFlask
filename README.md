@@ -10,6 +10,7 @@ Also, once the user has found the book desire, at clicking it, will be redirect 
   - Paths and HTTP methods
   - Jinja2
   - PostgreSQL
+  - How to create an API
   - Manipulation of the DOM with Javascript.
   
 # Use the app:
